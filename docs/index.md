@@ -13,9 +13,9 @@ This is a beginner's guide to `ggplot2` and data visualisation. It will assume t
 * You have a basic level of data visualisation comprehension, e.g., you can read various types of graphs
 * You haven't got a clue how to make these graphs in R
 
-This tutorial was the result of a request by [DavidTree](https://twitter.com/DavidTree) for anti-racism curriculum materials. The data used is from the [Slave Voyages](https://www.slavevoyages.org/) project. The Trans-Atlantic Slave Trade Database comprises 36,000 individual slaving expeditions between 1514 and 1866. This dataset is horrifying and so is the history contained within the graphs you produce.
+This tutorial was the result of a request by [David Tree](https://twitter.com/DavidTree) for anti-racism curriculum materials. The data used is from the [Slave Voyages](https://www.slavevoyages.org/) project. The Trans-Atlantic Slave Trade Database comprises 36,000 individual slaving expeditions between 1514 and 1866. This dataset is horrifying and so is the history contained within the graphs you will produce.
 
 Where additional instruction or detail about certain basic R functions might be helpful, I will point to relevant chapters of my MSc data skills book to avoid duplication.
 
-The code for this tutorial is available on [GitHub](https://github.com/emilynordmann/slavevoyagedata) with a Creative Commons licence. You may use it and adapt with without any further permission or attribution.
+The code for this tutorial is available on [GitHub](https://github.com/emilynordmann/slavevoyagedata) with a Creative Commons licence. You may use it and adapt with without any further permission.
 
