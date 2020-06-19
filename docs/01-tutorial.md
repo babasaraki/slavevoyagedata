@@ -138,8 +138,8 @@ ggplot(dat_final, aes(arrival_year, total_embarked)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-8-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-8)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-8-1.png" alt="Basic scatterplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-8)Basic scatterplot</p>
 </div>
 
 There's so many data points that it makes it difficult to get a real sense of the spread of the data. This isn't a fault of the graph, it's because of how many people were enslaved.
@@ -168,21 +168,9 @@ ggplot(dat_final, aes(arrival_year, total_embarked)) +
   geom_point()
 ```
 
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-```
-## Warning: Removed 422 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 422 rows containing missing values (geom_point).
-```
-
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-10-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-10)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-10-1.png" alt="Badly ordered layers" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-10)Badly ordered layers</p>
 </div>
 
 ## Boxplots
@@ -221,7 +209,7 @@ dat_filter <- dat_final %>%
   filter(start_port %in% c("Liverpool", "London", "Bristol"))
 ```
 
-Now we can run the boxplot again using the filtered dataset. We can see that the median number of slaves the embarked on slave ships originating in Liverpool, London and Bristol us over 250 but that there are many cases where this number is much, much higher.
+Now we can run the boxplot again using the filtered dataset. We can see that the median number of slaves that embarked on each slave ship originating in Liverpool, London and Bristol was over 250 but that there are many cases where this number is much, much higher.
 
 
 ```r
@@ -230,8 +218,8 @@ ggplot(dat_filter, aes(x = start_port, y = total_embarked)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-14-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-14)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-14-1.png" alt="Simple boxplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-14)Simple boxplot</p>
 </div>
 
 ## Violin-boxplots
@@ -252,8 +240,8 @@ ggplot(dat_filter, aes(x = start_port, y = total_embarked)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-15-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-15)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-15-1.png" alt="Violin-boxplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-15)Violin-boxplot</p>
 </div>
 
 We can see from these plots that the median number of slaves that embarked *on each ship* was just over 250 but that in many cases this number was much, much higher, particularly for ships that originated in Liverpool.
@@ -275,8 +263,8 @@ ggplot(dat_filter, aes(x = start_port, fill = start_port)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-16-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-16)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-16-1.png" alt="Bar chart of counts" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-16)Bar chart of counts</p>
 </div>
 
 Remember, this graph does not show the total number of slaves on the ships from these ports, it merely shows the number of voyages that originated from these three ports. 
@@ -317,8 +305,8 @@ ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-18-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-18)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-18-1.png" alt="Bar chart of summarised data with colour-blind palette" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-18)Bar chart of summarised data with colour-blind palette</p>
 </div>
 
 There were so many slaves embarked on ships originating from these three ports that R has decided that it is better to use scientific notation for the y-axis values. Try and think about the last time you had any data where the numbers involved were this large.
@@ -334,8 +322,8 @@ ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-19-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-19)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-19-1.png" alt="Bar chart with adjusted y-axis labels" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-19)Bar chart with adjusted y-axis labels</p>
 </div>
 
 Let's make some further visual adjustments:
@@ -356,8 +344,8 @@ ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-20-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-20)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-20-1.png" alt="Bar chart with theme and title" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-20)Bar chart with theme and title</p>
 </div>
 
 ## Saving plots
@@ -396,7 +384,7 @@ ggsave(filename = "my_plot.jpeg", plot = my_plot)
 
 So far all the plots we have made have represented a maximum of two variables, however, often you will want to represent three or more variables (be they continuous or discrete) and there are two main ways that you can do this. The first way is to display data from all variables on the same plot broken down by groups. 
 
-We can make another scatterplot, this time looking at how many slaves died in each year.
+First let's make another standard scatterplot, this time looking at how many slaves died in each year.
 
 
 ```r
@@ -405,21 +393,9 @@ ggplot(dat_filter, aes(arrival_year, died)) +
   geom_smooth()
 ```
 
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-```
-## Warning: Removed 8916 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 8916 rows containing missing values (geom_point).
-```
-
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-23-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-23)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-23-1.png" alt="Two-variable scatterplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-23)Two-variable scatterplot</p>
 </div>
 
 We can break this down by port of origin using `colour`.
@@ -432,21 +408,9 @@ ggplot(dat_filter, aes(arrival_year, died, colour = start_port)) +
   scale_colour_viridis_d(alpha = .8, option = "D")
 ```
 
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-```
-## Warning: Removed 8916 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 8916 rows containing missing values (geom_point).
-```
-
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-24-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-24)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-24-1.png" alt="Scatterplot grouped by colour" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-24)Scatterplot grouped by colour</p>
 </div>
 
 This graph now shows the data points and line of best fit in a different colour for each port of origin. We can make this easier to read by adding a theme, editing the axis labels, and also adjusting the limits of the x-axis so that there is no wasted space.
@@ -464,21 +428,9 @@ ggplot(dat_filter, aes(arrival_year, died, colour = start_port)) +
   scale_x_continuous(limits = c(1641, 1815))
 ```
 
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-```
-## Warning: Removed 8916 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 8916 rows containing missing values (geom_point).
-```
-
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-25-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-25)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-25-1.png" alt="Grouped scatterplot with adjusted axes" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-25)Grouped scatterplot with adjusted axes</p>
 </div>
 
 Alternatively, we can create three separate plots for each port using `facet_wrap()`.
@@ -503,21 +455,9 @@ ggplot(dat_filter, aes(arrival_year, died)) +
   scale_x_continuous(limits = c(1641, 1815))
 ```
 
-```
-## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-```
-
-```
-## Warning: Removed 8916 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 8916 rows containing missing values (geom_point).
-```
-
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-26-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-26)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-26-1.png" alt="Facetted scatterplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-26)Facetted scatterplot</p>
 </div>
 
 ## Reshaping data
@@ -554,8 +494,8 @@ ggplot(dat_long, aes(x = slave, y = prop, fill = start_port)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-28-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-28)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-28-1.png" alt="Grouped boxplot" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-28)Grouped boxplot</p>
 </div>
 
 
@@ -577,8 +517,8 @@ dat_long %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-tutorial_files/figure-html/unnamed-chunk-29-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-29)**CAPTION THIS FIGURE!!**</p>
+<img src="01-tutorial_files/figure-html/unnamed-chunk-29-1.png" alt="Boxplot using filtered dataset" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-29)Boxplot using filtered dataset</p>
 </div>
 
 

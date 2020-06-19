@@ -120,7 +120,7 @@ Things to note:
 * You don't need to write the argument names (data, x, y) as long as you use them in the default order. When you're first learning R, it can help to write them out.
 * R will give you the warning message `Removed 422 rows containing missing values (geom_point)`. This means that there were 422 rows in the data where one or both of the variables you're trying to plot are missing. 
 
-```{r}
+```{r fig.cap="Basic scatterplot"}
 ggplot(dat_final, aes(arrival_year, total_embarked)) +
   geom_point()
 ```
@@ -143,7 +143,7 @@ ggplot(dat_final, aes(arrival_year, total_embarked)) +
 
 One final note on layers before we move on, the order of the layers matters. If you specify `geom_smooth()` first, `ggplot()` will take your orders literally and draw the data points on top of it.
 
-```{r}
+```{r warning = FALSE, message = FALSE, fig.cap="Badly ordered layers"}
 ggplot(dat_final, aes(arrival_year, total_embarked)) +
   geom_smooth() +
   geom_point()
@@ -182,9 +182,9 @@ dat_filter <- dat_final %>%
   filter(start_port %in% c("Liverpool", "London", "Bristol"))
 ```
 
-Now we can run the boxplot again using the filtered dataset. We can see that the median number of slaves the embarked on slave ships originating in Liverpool, London and Bristol us over 250 but that there are many cases where this number is much, much higher.
+Now we can run the boxplot again using the filtered dataset. We can see that the median number of slaves that embarked on each slave ship originating in Liverpool, London and Bristol was over 250 but that there are many cases where this number is much, much higher.
 
-```{r warning = FALSE}
+```{r warning = FALSE, fig.cap="Simple boxplot"}
 ggplot(dat_filter, aes(x = start_port, y = total_embarked)) +
   geom_boxplot()
 ```
@@ -199,7 +199,7 @@ Things to note:
 * Trying changing `trim = FALSE` to `TRUE`.
 * Try changing the value of `width = .2`
 
-```{r warning = FALSE}
+```{r warning = FALSE, fig.cap= "Violin-boxplot"}
 ggplot(dat_filter, aes(x = start_port, y = total_embarked)) +
   geom_violin(trim = FALSE) +
   geom_boxplot(width = .2)
@@ -217,7 +217,7 @@ Things to note:
 * Try removing `fill = start_port` and see what happens.
 * Try changing `show.legend()` to `TRUE` and see what happens. Why do we want to suppress the legend in this case?
 
-```{r}
+```{r fig.cap="Bar chart of counts"}
 ggplot(dat_filter, aes(x = start_port, fill = start_port)) +
   geom_bar(show.legend = FALSE)
 ```
@@ -251,7 +251,7 @@ Things to note:
 * We've added an extra layer that makes our fill colours colour-blind friendly (the viridis palette). Because our fill variable is discrete (categorical), we've used the `...viridis_d` option, if we had a continuous variable, there's a `...viridis_c` version. 
 * Try changing `option = "E"` to any letter from A - D and see which one you prefer.
 
-```{r}
+```{r fig.cap="Bar chart of summarised data with colour-blind palette"}
 ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
   geom_col(show.legend = FALSE) +
   scale_fill_viridis_d(option = "E") 
@@ -261,7 +261,7 @@ There were so many slaves embarked on ships originating from these three ports t
 
 To override this behaviour and make the plot more readable we need to add an extra argument to adjust the y-axis labels. 
 
-```{r}
+```{r fig.cap="Bar chart with adjusted y-axis labels"}
 ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
   geom_col(show.legend = FALSE) +
   scale_fill_viridis_d(option = "E") +
@@ -273,7 +273,7 @@ Let's make some further visual adjustments:
 * `labs()` controls the labels of the axes.
 * You can adjust the overall theme of the graph using the theme functions. Here I have used `theme_minimal()` but there are lots of others available. Try deleting the line of code and then type `theme_` and see all of the options that come up on the auto-complete suggestions. Try them out to find one you like.
 
-```{r}
+```{r fig.cap="Bar chart with theme and title"}
 ggplot(port_summary, aes(x = start_port, y = embarked, fill = start_port)) +
   geom_col(show.legend = FALSE) +
   scale_fill_viridis_d(option = "E") +
@@ -310,9 +310,9 @@ ggsave(filename = "my_plot.jpeg", plot = my_plot)
 
 So far all the plots we have made have represented a maximum of two variables, however, often you will want to represent three or more variables (be they continuous or discrete) and there are two main ways that you can do this. The first way is to display data from all variables on the same plot broken down by groups. 
 
-We can make another scatterplot, this time looking at how many slaves died in each year.
+First let's make another standard scatterplot, this time looking at how many slaves died in each year.
 
-```{r}
+```{r fig.cap="Two-variable scatterplot", warning = FALSE, message = FALSE}
 ggplot(dat_filter, aes(arrival_year, died)) +
   geom_point() +
   geom_smooth()
@@ -320,7 +320,7 @@ ggplot(dat_filter, aes(arrival_year, died)) +
 
 We can break this down by port of origin using `colour`.
 
-```{r}
+```{r fig.cap="Scatterplot grouped by colour", warning = FALSE, message = FALSE}
 ggplot(dat_filter, aes(arrival_year, died, colour = start_port)) +
   geom_point() +
   geom_smooth(aes(colour = start_port)) +
@@ -329,7 +329,7 @@ ggplot(dat_filter, aes(arrival_year, died, colour = start_port)) +
 
 This graph now shows the data points and line of best fit in a different colour for each port of origin. We can make this easier to read by adding a theme, editing the axis labels, and also adjusting the limits of the x-axis so that there is no wasted space.
 
-```{r}
+```{r fig.cap="Grouped scatterplot with adjusted axes", warning = FALSE, message = FALSE}
 ggplot(dat_filter, aes(arrival_year, died, colour = start_port)) +
   geom_point() +
   geom_smooth() +
@@ -349,7 +349,7 @@ The base code for this plot is similar to the above with the following changes:
 *  An extra layer of `facet_wrap()` is added that tells R to split the graphs for each level of `start_port`.
 * `nrow` specifies the number of rows the plots should be split across. Try changing this number to 1.
 
-```{r}
+```{r fig.cap="Facetted scatterplot", warning = FALSE, message = FALSE}
 ggplot(dat_filter, aes(arrival_year, died)) +
   geom_point(aes(colour = start_port), show.legend = FALSE) +
   geom_smooth() +
@@ -386,7 +386,7 @@ Above we displayed different colours of a scatterplot by specifying a continious
 * Add the code that edits the axis labels. You should change the labels for x, y and fill, and also add a title.
 * Change the value of `alpha` and see what happens.
 
-```{r warning = FALSE}
+```{r warning = FALSE, fig.cap="Grouped boxplot", warning = FALSE, message = FALSE}
 ggplot(dat_long, aes(x = slave, y = prop, fill = start_port)) +
   geom_boxplot(alpha = .5) +
   scale_fill_viridis_d(option = "E") +
@@ -400,7 +400,7 @@ Finally, we can combine `ggplot()` with `filter()` using a pipe to narrow down o
 * Suppress the legend for `geom_boxplot()` because it's not informative
 * Use the `viridis` palette
 
-```{r warning = FALSE}
+```{r warning = FALSE, fig.cap="Boxplot using filtered dataset", warning = FALSE, message = FALSE}
 dat_long %>%
   filter(outcome == "Slaves disembarked in Americas") %>%
   ggplot(aes(x = slave, y = prop)) +
